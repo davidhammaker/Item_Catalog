@@ -121,3 +121,43 @@ nav a{
     border-style: solid;
     border-radius: 5px;
 }
+
+/* Flashed Messages */
+.good{
+    width: 730px;
+    padding: 10px;
+    margin: auto;
+    text-align: center;
+    color: #396039;
+    background-color: #afcfaf;
+    border-color: #afcfaf;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.neutral{
+    width: 730px;
+    padding: 10px;
+    margin: auto;
+    text-align: center;
+    color: #606039;
+    background-color: #afafcf;
+    border-color: #afafcf;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.bad{
+    width: 730px;
+    padding: 10px;
+    margin: auto;
+    text-align: center;
+    color: #603939;
+    background-color: #ffafaf;
+    border-color: #ff0000;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 5px;
+}
