@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask_dance.consumer.backend.sqla import OAuthConsumerMixin
 from flask_login import UserMixin
 from item_catalog import db
@@ -9,7 +10,7 @@ class Item(db.Model):
     sport = db.Column(db.String(256), nullable=False)
     category = db.Column(db.String(256), nullable=False)
     description = db.Column(db.String(1024), nullable=False)
-    date = db.Column(db.String(256), nullable=False)
+    date = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
     def __repr__(self):
         return f"Item('{self.name}', '{self.sport}', '{self.category}', '{self.date}')"
