@@ -15,7 +15,7 @@ def home():
 @app.route('/new_item', methods=['GET', 'POST'])
 def new_item():
     form = NewItemForm()
-    return render_template('new_item.html', form=form)
+    return render_template('new_item.html', form=form, title='New Item')
 
 
 if __name__ == '__main__':
