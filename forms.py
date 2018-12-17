@@ -22,5 +22,4 @@ class NewItemForm(FlaskForm):
                                                 ('Fan Gear', 'Fan Gear')],
                            validators=[DataRequired()])
     description = TextAreaField('Description', validators=[Length(max=2048)])
-    date = StringField('Date', validators=[DataRequired()])
     submit = SubmitField('Submit')
