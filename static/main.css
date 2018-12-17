@@ -72,3 +72,52 @@ nav a{
     border-style: solid;
     border-radius: 5px;
 }
+
+.center{
+    width: 100%;
+    background-color: #ffffff;
+    padding: 25px;
+    border-color: #393960;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.center h2{
+    padding-bottom: 10px;
+    border-bottom-color: #afafcf;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+/* Forms */
+.center form{
+    width: 500px;
+    margin: auto;
+}
+
+.form-field{
+    width: 100%;
+    margin-top: 5px;
+    border-color: #393960;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.form-submit{
+    color: #ffffff;
+    background-color: #393960;
+    border-color: #393960;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.form-submit:hover{
+    color: #ffffff;
+    background-color: #6060ff;
+    border-color: #6060ff;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 5px;
+}
