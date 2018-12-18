@@ -10,6 +10,13 @@ def home():
     return render_template('home.html', items=items)
 
 
+@app.route('/all')
+def all_items():
+    page = request.args.get('page', 1, type=int)
+    items = Item.query.order_by(Item.name).paginate(page=page, per_page=10)
+    return render_template('all.html', items=items)
+
+
 @app.route('/new_item', methods=['GET', 'POST'])
 def new_item():
     form = ItemForm()

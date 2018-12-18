@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="main">
+        <div class="col-l">
+            <h2>Sports</h2>
+            <ul>
+                <li><a href="#">Baseball</a></li>
+                <li><a href="#">Basketball</a></li>
+                <li><a href="#">Bowling</a></li>
+                <li><a href="#">Boxing</a></li>
+                <li><a href="#">Football</a></li>
+                <li><a href="#">Golf</a></li>
+                <li><a href="#">Hockey</a></li>
+                <li><a href="#">Soccer</a></li>
+                <li><a href="#">Tennis</a></li>
+                <li><a href="#">Other</a></li>
+            </ul>
+        </div>
+        <div class="col-r">
+            <h2>All Items</h2>
+            {% for item in items.items %}
+                <br>
+                <div class="listed">
+                    <small>{{ item.sport }}, {{ item.category }}</small>
+                    <h3><a href="{{ url_for('item', item_name=item.name) }}">{{ item.name }}</a></h3>
+                    {% if item.private %}
+                        <h6>Private</h6>
+                    {% endif %}
+                    <p>{{ item.description }}</p>
+                    <small class="footer">Submitted by {{ item.user.username }}.</small>
+                </div>
+                <br>
+            {% endfor %}
+            {% for page_num in items.iter_pages() %}
+                {% if page_num %}
+                    <a href="{{ url_for('all_items', page=page_num) }}">{{ page_num }}</a>
+                {% else %}
+                    ...
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}
