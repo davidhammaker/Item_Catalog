@@ -23,7 +23,10 @@ def new_item():
             sport = form.sport.data
             category = form.category.data
             description = form.description.data
-            item = Item(name=name, sport=sport, category=category, description=description, user_id=user.id)
+            private = form.private.data
+            item = Item(name=name, sport=sport, category=category,
+                        description=description, private=private,
+                        user_id=user.id)
             db.session.add(item)
             db.session.commit()
             flash(f'"{name}" has been added!', 'good')

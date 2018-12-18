@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SelectField, TextAreaField, SubmitField
+from wtforms import StringField, SelectField, TextAreaField, SubmitField, BooleanField
 from wtforms.validators import DataRequired, Length
 
 
@@ -22,4 +22,5 @@ class NewItemForm(FlaskForm):
                                                 ('Fan Gear', 'Fan Gear')],
                            validators=[DataRequired()])
     description = TextAreaField('Description', validators=[Length(max=2048)])
+    private = BooleanField('Private')
     submit = SubmitField('Submit')

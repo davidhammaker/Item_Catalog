@@ -11,6 +11,7 @@ class Item(db.Model):
     category = db.Column(db.String(256), nullable=False)
     description = db.Column(db.String(1024), nullable=False)
     date = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    private = db.Column(db.Boolean, default=0, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
