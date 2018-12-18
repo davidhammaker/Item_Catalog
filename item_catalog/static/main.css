@@ -152,6 +152,10 @@ nav a{
     padding: 10px 0;
 }
 
+.listed h6{
+    margin-bottom: 10px;
+}
+
 .listed .footer{
     float: none;
     padding-left: 20px;
