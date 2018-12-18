@@ -6,7 +6,10 @@ from item_catalog.models import Item, User
 
 @app.route('/')
 def home():
-    items = Item.query.all()
+    query = Item.query.order_by(Item.date.desc()).all()
+    items = []
+    for i in range(10):
+        items.append(query[i])
     return render_template('home.html', items=items)
 
 
