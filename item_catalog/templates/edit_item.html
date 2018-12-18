@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="main">
+        <div class="center">
+            <h2>Edit "{{ item.name }}"</h2>
+            <br>
+            <form action="" method="post">
+                {{ form.hidden_tag() }}
+
+                <h3>{{ form.name.label }}:</h3>
+                <p>{{ form.name(class="form-field") }}</p>
+                <br>
+
+                <h3>{{ form.sport.label }}:</h3>
+                <p>{{ form.sport(class="form-field") }}</p>
+                <br>
+
+                <h3>{{ form.category.label }}:</h3>
+                <p>{{ form.category(class="form-field") }}</p>
+                <br>
+
+                <h3>{{ form.description.label }}:</h3>
+                <p>{{ form.description(class="form-field") }}</p>
+                <br>
+
+                <p>{{ form.private(class="form-field-bool") }} {{ form.private.label }}</p>
+                <br>
+                <br>
+
+                {{ form.submit(class="form-submit") }}
+            </form>
+        </div>
+    </div>
+{% endblock content %}
