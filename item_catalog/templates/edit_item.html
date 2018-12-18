@@ -31,5 +31,11 @@
                 {{ form.submit(class="form-submit") }}
             </form>
         </div>
+        <br>
+        <div class="center-small">
+            <ul>
+                <li><a href="{{ url_for('item', item_name=item.name ) }}">Return to Item Page</a></li>
+            </ul>
+        </div>
     </div>
 {% endblock content %}
