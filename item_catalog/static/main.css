@@ -188,6 +188,56 @@ nav a{
     padding-left: 20px;
 }
 
+/* Smaller Centered Content */
+.center-small{
+    width: 400px;
+    background-color: #ffffff;
+    padding: 25px;
+    margin: auto;
+    border-color: #393960;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.center-small ul{
+    text-align: center;
+    list-style: none;
+}
+
+.center-small li{
+    display: inline-block;
+}
+
+.center-small a{
+    display: inline-block;
+    color: #ffffff;
+    text-decoration: none;
+    width: 150px;
+    margin: 0 10px;
+    background-color: #393960;
+    border-color: #393960;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.center-small a:hover{
+    display: inline-block;
+    background-color: #6060ff;
+    border-color: #6060ff;
+}
+
+.center-small .delete{
+    background-color: #603939;
+    border-color: #603939;
+}
+
+.center-small .delete:hover{
+    background-color: #ff6060;
+    border-color: #ff6060;
+}
+
 /* Forms */
 .center form{
     width: 500px;

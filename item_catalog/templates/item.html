@@ -12,5 +12,12 @@
             <p>{{ item.description }}</p>
             <small class="footer">Submitted by {{ item.user.username }}.</small>
         </div>
+        <br>
+        <div class="center-small">
+            <ul>
+                <li><a href="{{ url_for('edit_item', item_name=item.name ) }}">Edit Item</a></li>
+                <li><a href="#" class="delete">Delete Item</a></li>
+            </ul>
+        </div>
     </div>
 {% endblock content %}
