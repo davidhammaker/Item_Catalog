@@ -50,6 +50,7 @@ nav a{
     margin: 50px auto 0 auto;
 }
 
+/* Left Column */
 .col-l{
     float: left;
     width: 200px;
@@ -93,11 +94,11 @@ nav a{
     color: #6060ff;
     margin-left: 5px;
     border-left-color: #6060ff;
-    border-left-style: solid;
     border-left-width: 15px;
     border-radius: 15px;
 }
 
+/* Right Column */
 .col-r{
     float: right;
     width: 500px;
@@ -156,6 +157,7 @@ nav a{
     padding-left: 20px;
 }
 
+/* Primary Centered Content */
 .center{
     max-width: 100%;
     background-color: #ffffff;
@@ -210,12 +212,8 @@ nav a{
 }
 
 .form-submit:hover{
-    color: #ffffff;
     background-color: #6060ff;
     border-color: #6060ff;
-    border-width: 2px;
-    border-style: solid;
-    border-radius: 5px;
 }
 
 /* Flashed Messages */
