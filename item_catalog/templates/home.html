@@ -12,6 +12,9 @@
                 <div class="listed">
                     <small>{{ item.sport }}, {{ item.category }}</small>
                     <h3>{{ item.name }}</h3>
+                    {% if item.private %}
+                        <h6>Private</h6>
+                    {% endif %}
                     <p>{{ item.description }}</p>
                     <small class="footer">Submitted by {{ item.user.username }}.</small>
                 </div>
