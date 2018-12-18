@@ -6,7 +6,16 @@
             Column Left
         </div>
         <div class="col-r">
-            Column Right
+            <h2>Recent Items</h2>
+            <div class="listed">
+                {% for item in items %}
+                    <br>
+                    <small>{{ item.sport }}, {{ item.category }}</small>
+                    <h3>{{ item.name }}</h3>
+                    <p>{{ item.description }}</p>
+                    <small class="footer">Submitted by {{ item.user.username }}.</small>
+                {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock content %}
