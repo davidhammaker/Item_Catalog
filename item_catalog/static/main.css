@@ -84,6 +84,7 @@ nav a{
 .listed{
     width: 400px;
     padding-left: 15px;
+    padding-top: 5px;
     margin: auto;
     border-left-color: #afafcf;
     border-left-style: solid;

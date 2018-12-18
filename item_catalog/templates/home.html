@@ -7,15 +7,16 @@
         </div>
         <div class="col-r">
             <h2>Recent Items</h2>
-            <div class="listed">
-                {% for item in items %}
-                    <br>
+            {% for item in items %}
+                <br>
+                <div class="listed">
                     <small>{{ item.sport }}, {{ item.category }}</small>
                     <h3>{{ item.name }}</h3>
                     <p>{{ item.description }}</p>
                     <small class="footer">Submitted by {{ item.user.username }}.</small>
-                {% endfor %}
-            </div>
+                </div>
+                <br>
+            {% endfor %}
         </div>
     </div>
 {% endblock content %}
