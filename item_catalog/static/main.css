@@ -119,6 +119,33 @@ nav a{
     border-bottom-width: 1px;
 }
 
+.col-r .page-num{
+    color: #ffffff;
+    text-decoration: none;
+    padding: 5px;
+    background-color: #393960;
+    border-color: #393960;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.col-r .page-num:hover{
+    background-color: #6060ff;
+    border-color: #6060ff;
+}
+
+.col-r .page-num-current{
+    color: #393960;
+    text-decoration: none;
+    padding: 5px;
+    background-color: #cfcfff;
+    border-color: #cfcfff;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 5px;
+}
+
 .listed{
     width: 400px;
     padding-left: 15px;
