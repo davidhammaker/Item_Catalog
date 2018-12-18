@@ -26,5 +26,6 @@ def new_item():
             item = Item(name=name, sport=sport, category=category, description=description, user_id=user.id)
             db.session.add(item)
             db.session.commit()
+            flash(f'"{name}" has been added!', 'good')
             return redirect(url_for('home'))
     return render_template('new_item.html', form=form, title='New Item')
