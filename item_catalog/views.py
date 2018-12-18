@@ -13,7 +13,7 @@ def home():
 @app.route('/new_item', methods=['GET', 'POST'])
 def new_item():
     form = NewItemForm()
-    user = User.query.one()
+    user = User.query.first()
     if form.validate_on_submit():
         query = Item.query.filter_by(name=form.name.data, sport=form.sport.data).first()
         if query:
