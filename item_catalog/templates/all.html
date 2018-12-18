@@ -6,7 +6,7 @@
             {% include 'sports.html' %}
         </div>
         <div class="col-r">
-            <h2>All Items</h2>
+            <h2>All Items{% if title %} | {{ title }}{% endif %}</h2>
             {% for item in items.items %}
                 <br>
                 <div class="listed">
