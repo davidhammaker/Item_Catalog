@@ -73,6 +73,42 @@ nav a{
     border-radius: 5px;
 }
 
+.col-r h2{
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom-color: #afafcf;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+.listed{
+    width: 400px;
+    padding-left: 15px;
+    margin: auto;
+    border-left-color: #afafcf;
+    border-left-style: solid;
+    border-left-width: 15px;
+    border-radius: 15px;
+}
+
+.listed small{
+    float: right;
+    font-style: italic;
+}
+
+.listed h3{
+    padding-bottom: 5px;
+}
+
+.listed p{
+    padding: 10px 0;
+}
+
+.listed .footer{
+    float: none;
+    padding-left: 20px;
+}
+
 .center{
     width: 100%;
     background-color: #ffffff;
