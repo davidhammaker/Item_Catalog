@@ -24,3 +24,7 @@ class ItemForm(FlaskForm):
     description = TextAreaField('Description', validators=[Length(max=2048)])
     private = BooleanField('Private')
     submit = SubmitField('Submit')
+
+
+class DeleteItemForm(FlaskForm):
+    submit = SubmitField('Delete')

@@ -1,6 +1,6 @@
 from flask import render_template, redirect, url_for, flash, abort, request
 from item_catalog import app, db
-from item_catalog.forms import ItemForm
+from item_catalog.forms import ItemForm, DeleteItemForm
 from item_catalog.models import Item, User
 
 
@@ -70,3 +70,17 @@ def edit_item(item_name):
         form.description.data = item.description
         form.private.data = item.private
     return render_template('edit_item.html', item=item, form=form)
+
+
+@app.route('/item/<string:item_name>/delete', methods=['GET', 'POST'])
+def delete_item(item_name):
+    item = Item.query.filter_by(name=item_name).first()
+    if not item:
+        abort(404)
+    form = DeleteItemForm()
+    if form.validate_on_submit():
+        db.session.delete(item)
+        db.session.commit()
+        flash(f'"{item.name}" has been deleted.', 'good')
+        return redirect(url_for('home'))
+    return render_template('delete_item.html', item=item, form=form)
