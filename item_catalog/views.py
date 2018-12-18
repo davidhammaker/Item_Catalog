@@ -1,6 +1,6 @@
 from flask import render_template, redirect, url_for, flash, abort, request
 from item_catalog import app, db
-from item_catalog.forms import NewItemForm
+from item_catalog.forms import ItemForm
 from item_catalog.models import Item, User
 
 
@@ -12,7 +12,7 @@ def home():
 
 @app.route('/new_item', methods=['GET', 'POST'])
 def new_item():
-    form = NewItemForm()
+    form = ItemForm()
     user = User.query.first()
     if form.validate_on_submit():
         query = Item.query.filter_by(name=form.name.data, sport=form.sport.data).first()
@@ -47,7 +47,7 @@ def edit_item(item_name):
     item = Item.query.filter_by(name=item_name).first()
     if not item:
         abort(404)
-    form = NewItemForm()
+    form = ItemForm()
     if form.validate_on_submit():
         if form.name.data != item.name or form.sport.data != item.sport:
             query = Item.query.filter_by(name=form.name.data, sport=form.sport.data).first()

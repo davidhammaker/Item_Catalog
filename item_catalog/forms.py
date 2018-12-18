@@ -3,7 +3,7 @@ from wtforms import StringField, SelectField, TextAreaField, SubmitField, Boolea
 from wtforms.validators import DataRequired, Length
 
 
-class NewItemForm(FlaskForm):
+class ItemForm(FlaskForm):
     name = StringField('Item Name', validators=[DataRequired(), Length(max=64)])
     sport = SelectField('Sport', choices=[('Baseball', 'Baseball'),
                                           ('Basketball', 'Basketball'),
