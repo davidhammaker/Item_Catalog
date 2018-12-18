@@ -138,6 +138,15 @@ nav a{
     padding-bottom: 5px;
 }
 
+.listed h3 a{
+    color: #000000;
+    text-decoration: none;
+}
+
+.listed h3 a:hover{
+    color: #6060ff;
+}
+
 .listed p{
     padding: 10px 0;
 }
