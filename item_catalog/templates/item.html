@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="main">
+        <div class="center">
+            <small>{{ item.sport }}, {{ item.category }}</small>
+            <h2>{{ item.name }}</h2>
+            <br>
+            {% if item.private %}
+                <h6>Private</h6>
+            {% endif %}
+            <p>{{ item.description }}</p>
+            <small class="footer">Submitted by {{ item.user.username }}.</small>
+        </div>
+    </div>
+{% endblock content %}

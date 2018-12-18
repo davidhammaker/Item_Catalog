@@ -148,7 +148,7 @@ nav a{
 }
 
 .center{
-    width: 100%;
+    max-width: 100%;
     background-color: #ffffff;
     padding: 25px;
     border-color: #393960;
@@ -162,6 +162,19 @@ nav a{
     border-bottom-color: #afafcf;
     border-bottom-style: solid;
     border-bottom-width: 1px;
+}
+
+.center small{
+    float: right;
+}
+
+.center p{
+    padding: 10px 0;
+}
+
+.center .footer{
+    float: none;
+    padding-left: 20px;
 }
 
 /* Forms */

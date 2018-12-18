@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for, flash
+from flask import render_template, redirect, url_for, flash, abort
 from item_catalog import app, db
 from item_catalog.forms import NewItemForm
 from item_catalog.models import Item, User
@@ -32,3 +32,11 @@ def new_item():
             flash(f'"{name}" has been added!', 'good')
             return redirect(url_for('home'))
     return render_template('new_item.html', form=form, title='New Item')
+
+
+@app.route('/item/<string:item_name>')
+def item(item_name):
+    item = Item.query.filter_by(name=item_name).first()
+    if not item:
+        abort(404)
+    return render_template('item.html', item=item)
