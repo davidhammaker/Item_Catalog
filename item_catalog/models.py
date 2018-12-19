@@ -42,7 +42,8 @@ class Item(db.Model):
 
 
 class User(db.Model, UserMixin):
-    """Table for storing users.
+    """Table for storing users. Based on Flask-Login and Flask-Dance
+    documentation.
 
     Inherits from:
     db.Model -- the class is a Flask-SQLAlchemy model
@@ -67,7 +68,7 @@ class User(db.Model, UserMixin):
 
 
 class OAuth(db.Model, OAuthConsumerMixin):
-    """Table for storing users.
+    """Table for storing users. Based on Flask-Dance documentation.
 
     Inherits from:
     db.Model -- the class is a Flask-SQLAlchemy model

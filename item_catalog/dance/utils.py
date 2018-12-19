@@ -16,6 +16,8 @@ blueprint = make_github_blueprint(
 
 @login_manager.user_loader
 def load_user(user_id):
+    """Set user_loader callback. Based on Flask-Login and Flask-Dance
+    documentation."""
     return User.query.get(int(user_id))
 
 
@@ -24,6 +26,14 @@ blueprint.backend = SQLAlchemyBackend(OAuth, db.session, user=current_user)
 
 @oauth_authorized.connect_via(blueprint)
 def github_logged_in(blueprint, token):
+    """Log in users, storing them in the database if they are not
+    already stored. Heavily based on Flask-Dance documentation.
+
+    Keyword Arguments:
+    blueprint -- the github blueprint containing the client ID and
+        client secret.
+    token -- the OAuth authentication token.
+    """
     if not token:
         flash('Failed to log in with GitHub.', 'bad')
         return False
@@ -60,6 +70,8 @@ def github_logged_in(blueprint, token):
 
 @oauth_error.connect_via(blueprint)
 def github_error(blueprint, error, error_description=None, error_uri=None):
+    """Display OAuth provider errors. Heavily based on Flask-Dance
+    documentation."""
     message = f'Oauth error from {blueprint.name}! error={error} ' \
         f'description={error_description} uri={error_uri}'
     flash(message, 'bad')

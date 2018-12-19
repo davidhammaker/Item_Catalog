@@ -52,6 +52,8 @@ def sport(sport):
 @main.route('/logout')
 @login_required
 def logout():
+    """Log out the user. Based on Flask-Login and Flask-Dance
+    documentation."""
     logout_user()
     flash('You have logged out.', 'neutral')
     return redirect(url_for('main.home'))
