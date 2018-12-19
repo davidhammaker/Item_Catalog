@@ -72,11 +72,11 @@ class OAuth(db.Model, OAuthConsumerMixin):
     Inherits from:
     db.Model -- the class is a Flask-SQLAlchemy model
     OAuthConsumerMixin -- the class must include OAuthConsumerMixin
-        methods
+        methods and attributes
 
     Attributes:
     provider_user_id -- a db.Column designating a unique string that
-        represents the associated OAuth provider
+        represents user ID with the associated OAuth provider
     user_id -- a db.Column designating an integer representing the
     associated user's ID
     user -- a db.relationship to the User class creating a
