@@ -9,7 +9,7 @@ main = Blueprint('main', __name__)
 @main.route('/')
 def home():
     """Render the home page with recent items."""
-    query = Item.query.order_by(Item.date.desc()).all()
+    query = Item.query.filter_by(private=False).order_by(Item.date.desc()).all()
     items = []
     for i in range(10):
         items.append(query[i])
