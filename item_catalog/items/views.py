@@ -1,4 +1,5 @@
-from flask import render_template, redirect, url_for, flash, abort, request, Blueprint
+from flask import (render_template, redirect, url_for, flash, abort, request,
+                   Blueprint)
 from item_catalog import db
 from item_catalog.items.forms import ItemForm, DeleteItemForm
 from item_catalog.models import Item, User
@@ -8,11 +9,13 @@ items = Blueprint('items', __name__)
 
 @items.route('/new_item', methods=['GET', 'POST'])
 def new_item():
-    """Render a form for creating a new item, or redirect after item creation."""
+    """Render a form for creating a new item, or redirect after item
+    creation."""
     form = ItemForm()
     user = User.query.first()
     if form.validate_on_submit():
-        query = Item.query.filter_by(name=form.name.data, sport=form.sport.data).first()
+        query = Item.query.filter_by(name=form.name.data,
+                                     sport=form.sport.data).first()
         if query:
             flash('This sport already has an item with that name.', 'bad')
         else:
@@ -33,8 +36,8 @@ def new_item():
 
 @items.route('/item/<string:item_name>')
 def item(item_name):
-    """Render a form for updating an existing item, or redirect after item
-    update.
+    """Render a form for updating an existing item, or redirect after
+    item update.
 
     Keyword arguments:
     item_name -- the name of the item
@@ -47,8 +50,8 @@ def item(item_name):
 
 @items.route('/item/<string:item_name>/edit', methods=['GET', 'POST'])
 def edit_item(item_name):
-    """Render a form for updating an existing item, or redirect after item
-    update.
+    """Render a form for updating an existing item, or redirect after
+    item update.
 
     Keyword arguments:
     item_name -- the name of the item
@@ -59,10 +62,12 @@ def edit_item(item_name):
     form = ItemForm()
     if form.validate_on_submit():
         if form.name.data != item.name or form.sport.data != item.sport:
-            query = Item.query.filter_by(name=form.name.data, sport=form.sport.data).first()
+            query = Item.query.filter_by(name=form.name.data,
+                                         sport=form.sport.data).first()
             if query:
                 flash('This sport already has an item with that name.', 'bad')
-                return redirect(url_for('items.edit_item', item_name=item_name))
+                return redirect(url_for('items.edit_item',
+                                        item_name=item_name))
         else:
             item.name = form.name.data
             item.sport = form.sport.data
@@ -83,8 +88,8 @@ def edit_item(item_name):
 
 @items.route('/item/<string:item_name>/delete', methods=['GET', 'POST'])
 def delete_item(item_name):
-    """Render a form for deleting an existing item, or redirect after item
-    deletion.
+    """Render a form for deleting an existing item, or redirect after
+    item deletion.
 
     Keyword arguments:
     item_name -- the name of the item

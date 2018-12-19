@@ -9,8 +9,8 @@ def create_app(config_class=Config):
     """Create a new app instance.
 
     Keyword arguments:
-    config_class -- the configuration class for configuring the application
-    (default Config).
+    config_class -- the configuration class for configuring the
+        application (default Config).
     """
     app = Flask(__name__)
     app.config.from_object(config_class)

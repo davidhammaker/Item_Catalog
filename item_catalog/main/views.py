@@ -42,5 +42,6 @@ def sport(sport):
     if sport not in sports:
         abort(404)
     page = request.args.get('page', 1, type=int)
-    items = Item.query.filter_by(sport=sport).order_by(Item.name).paginate(page=page, per_page=10)
+    items = Item.query.filter_by(sport=sport).order_by(Item.name)\
+        .paginate(page=page, per_page=10)
     return render_template('all.html', items=items)
