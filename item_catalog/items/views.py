@@ -1,5 +1,6 @@
 from flask import (render_template, redirect, url_for, flash, abort, request,
                    Blueprint)
+from flask_login import login_required, current_user
 from item_catalog import db
 from item_catalog.items.forms import ItemForm, DeleteItemForm
 from item_catalog.models import Item, User
@@ -8,11 +9,12 @@ items = Blueprint('items', __name__)
 
 
 @items.route('/new_item', methods=['GET', 'POST'])
+@login_required
 def new_item():
     """Render a form for creating a new item, or redirect after item
     creation."""
     form = ItemForm()
-    user = User.query.first()
+    user = current_user
     if form.validate_on_submit():
         query = Item.query.filter_by(name=form.name.data,
                                      sport=form.sport.data).first()
