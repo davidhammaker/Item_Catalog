@@ -1,5 +1,16 @@
                 <h3>{{ form.name.label }}:</h3>
+                {% if form.name.errors %}
+                    <p>{{ form.name(class="form-field-errors") }}</p>
+                    <div class="error-feedback">
+                        <ul>
+                            {% for error in form.name.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% else %}
                     <p>{{ form.name(class="form-field") }}</p>
+                {% endif %}
                 <br>
 
                 <h3>{{ form.sport.label }}:</h3>
@@ -11,7 +22,18 @@
                 <br>
 
                 <h3>{{ form.description.label }}:</h3>
+                {% if form.description.errors %}
+                    <p>{{ form.description(class="form-field-errors") }}</p>
+                    <div class="error-feedback">
+                        <ul>
+                            {% for error in form.description.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% else %}
                     <p>{{ form.description(class="form-field") }}</p>
+                {% endif %}
                 <br>
 
                 <p>{{ form.private(class="form-field-bool") }} {{ form.private.label }}</p>

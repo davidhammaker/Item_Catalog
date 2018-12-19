@@ -302,6 +302,24 @@ nav a{
     border-style: solid;
 }
 
+.form-field-errors{
+    width: 448px;
+    border-color: #ff0000;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.error-feedback{
+    color: #ff0000;
+    font-style: italic;
+    font-size: small;
+    padding-top: 10px;
+}
+
+.error-feedback ul{
+    list-style-type: none;
+}
+
 .form-submit{
     color: #ffffff;
     background-color: #393960;
