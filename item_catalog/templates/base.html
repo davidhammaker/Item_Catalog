@@ -12,8 +12,12 @@
             </div>
             <div class="nav-r">
                 <ul>
-                    <li><a href="{{ url_for('items.new_item') }}">New Item</a></li>
-                    <li><a href="#">Log Out</a></li>
+                    {% if current_user.is_authenticated %}
+                        <li><a href="{{ url_for('items.new_item') }}">New Item</a></li>
+                        <li><a href="{{ url_for('main.logout') }}">Log Out</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('github.login') }}">Log In with GitHub</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>

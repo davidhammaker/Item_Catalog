@@ -1,4 +1,6 @@
-from flask import render_template, abort, request, Blueprint
+from flask import (render_template, abort, request, Blueprint, flash,
+                   redirect, url_for)
+from flask_login import login_required, logout_user
 from item_catalog.models import Item
 
 main = Blueprint('main', __name__)
@@ -45,3 +47,11 @@ def sport(sport):
     items = Item.query.filter_by(sport=sport).order_by(Item.name)\
         .paginate(page=page, per_page=10)
     return render_template('all.html', items=items)
+
+
+@main.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash('You have logged out.', 'neutral')
+    return redirect(url_for('main.home'))
