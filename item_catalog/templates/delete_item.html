@@ -9,7 +9,7 @@
             <form action="" method="post">
                 {{ form.hidden_tag() }}
                 <ul>
-                    <li><a href="{{ url_for('item', item_name=item.name ) }}">Cancel</a></li>
+                    <li><a href="{{ url_for('items.item', item_name=item.name ) }}">Cancel</a></li>
                     <li>{{ form.submit(class='delete-submit') }}</li>
                 </ul>
             </form>

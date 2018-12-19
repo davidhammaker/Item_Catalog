@@ -1,12 +1,19 @@
-import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from item_catalog.config import Config
 
-app = Flask(__name__)
+db = SQLAlchemy()
 
-app.secret_key = os.environ.get('IC_SECRET')
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('IC_DATABASE')
 
-db = SQLAlchemy(app)
+def create_app(config_class=Config):
+    app = Flask(__name__)
+    app.config.from_object(config_class)
 
-from item_catalog import views
+    db.init_app(app)
+
+    from item_catalog.main.views import main
+    from item_catalog.items.views import items
+    app.register_blueprint(main)
+    app.register_blueprint(items)
+
+    return app

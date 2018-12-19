@@ -1,45 +1,12 @@
-from flask import render_template, redirect, url_for, flash, abort, request
-from item_catalog import app, db
-from item_catalog.forms import ItemForm, DeleteItemForm
+from flask import render_template, redirect, url_for, flash, abort, request, Blueprint
+from item_catalog import db
+from item_catalog.items.forms import ItemForm, DeleteItemForm
 from item_catalog.models import Item, User
 
-
-@app.route('/')
-def home():
-    query = Item.query.order_by(Item.date.desc()).all()
-    items = []
-    for i in range(10):
-        items.append(query[i])
-    return render_template('home.html', items=items)
+items = Blueprint('items', __name__)
 
 
-@app.route('/all')
-def all_items():
-    page = request.args.get('page', 1, type=int)
-    items = Item.query.order_by(Item.name).paginate(page=page, per_page=10)
-    return render_template('all.html', items=items)
-
-
-@app.route('/sport/<string:sport>')
-def sport(sport):
-    sports = ['Baseball',
-              'Basketball',
-              'Bowling',
-              'Boxing',
-              'Football',
-              'Golf',
-              'Hockey',
-              'Soccer',
-              'Tennis',
-              'Other']
-    if sport not in sports:
-        abort(404)
-    page = request.args.get('page', 1, type=int)
-    items = Item.query.filter_by(sport=sport).order_by(Item.name).paginate(page=page, per_page=10)
-    return render_template('all.html', items=items)
-
-
-@app.route('/new_item', methods=['GET', 'POST'])
+@items.route('/new_item', methods=['GET', 'POST'])
 def new_item():
     form = ItemForm()
     user = User.query.first()
@@ -59,11 +26,11 @@ def new_item():
             db.session.add(item)
             db.session.commit()
             flash(f'"{name}" has been added!', 'good')
-            return redirect(url_for('home'))
+            return redirect(url_for('main.home'))
     return render_template('new_item.html', form=form, title='New Item')
 
 
-@app.route('/item/<string:item_name>')
+@items.route('/item/<string:item_name>')
 def item(item_name):
     item = Item.query.filter_by(name=item_name).first()
     if not item:
@@ -71,7 +38,7 @@ def item(item_name):
     return render_template('item.html', item=item)
 
 
-@app.route('/item/<string:item_name>/edit', methods=['GET', 'POST'])
+@items.route('/item/<string:item_name>/edit', methods=['GET', 'POST'])
 def edit_item(item_name):
     item = Item.query.filter_by(name=item_name).first()
     if not item:
@@ -82,7 +49,7 @@ def edit_item(item_name):
             query = Item.query.filter_by(name=form.name.data, sport=form.sport.data).first()
             if query:
                 flash('This sport already has an item with that name.', 'bad')
-                return redirect(url_for('edit_item', item_name=item_name))
+                return redirect(url_for('items.edit_item', item_name=item_name))
         else:
             item.name = form.name.data
             item.sport = form.sport.data
@@ -91,7 +58,7 @@ def edit_item(item_name):
             item.private = form.private.data
             db.session.commit()
             flash(f'"{item.name}" has been updated!', 'good')
-            return redirect(url_for('item', item_name=item_name))
+            return redirect(url_for('items.item', item_name=item_name))
     elif request.method == 'GET':
         form.name.data = item.name
         form.sport.data = item.sport
@@ -101,7 +68,7 @@ def edit_item(item_name):
     return render_template('edit_item.html', item=item, form=form)
 
 
-@app.route('/item/<string:item_name>/delete', methods=['GET', 'POST'])
+@items.route('/item/<string:item_name>/delete', methods=['GET', 'POST'])
 def delete_item(item_name):
     item = Item.query.filter_by(name=item_name).first()
     if not item:
@@ -111,5 +78,5 @@ def delete_item(item_name):
         db.session.delete(item)
         db.session.commit()
         flash(f'"{item.name}" has been deleted.', 'good')
-        return redirect(url_for('home'))
+        return redirect(url_for('main.home'))
     return render_template('delete_item.html', item=item, form=form)
