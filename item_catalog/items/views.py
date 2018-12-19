@@ -8,6 +8,7 @@ items = Blueprint('items', __name__)
 
 @items.route('/new_item', methods=['GET', 'POST'])
 def new_item():
+    """Render a form for creating a new item, or redirect after item creation."""
     form = ItemForm()
     user = User.query.first()
     if form.validate_on_submit():
@@ -32,6 +33,12 @@ def new_item():
 
 @items.route('/item/<string:item_name>')
 def item(item_name):
+    """Render a form for updating an existing item, or redirect after item
+    update.
+
+    Keyword arguments:
+    item_name -- the name of the item
+    """
     item = Item.query.filter_by(name=item_name).first()
     if not item:
         abort(404)
@@ -40,6 +47,12 @@ def item(item_name):
 
 @items.route('/item/<string:item_name>/edit', methods=['GET', 'POST'])
 def edit_item(item_name):
+    """Render a form for updating an existing item, or redirect after item
+    update.
+
+    Keyword arguments:
+    item_name -- the name of the item
+    """
     item = Item.query.filter_by(name=item_name).first()
     if not item:
         abort(404)
@@ -70,6 +83,12 @@ def edit_item(item_name):
 
 @items.route('/item/<string:item_name>/delete', methods=['GET', 'POST'])
 def delete_item(item_name):
+    """Render a form for deleting an existing item, or redirect after item
+    deletion.
+
+    Keyword arguments:
+    item_name -- the name of the item
+    """
     item = Item.query.filter_by(name=item_name).first()
     if not item:
         abort(404)
