@@ -3,7 +3,6 @@ from item_catalog.models import Item
 from item_catalog.jsons.utils import json_prep
 
 # Create 'jsons' blueprint
-
 jsons = Blueprint('jsons', __name__)
 
 

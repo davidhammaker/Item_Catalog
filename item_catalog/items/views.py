@@ -6,7 +6,6 @@ from item_catalog.items.forms import ItemForm, DeleteItemForm
 from item_catalog.models import Item
 
 # Create 'items' blueprint
-
 items = Blueprint('items', __name__)
 
 
