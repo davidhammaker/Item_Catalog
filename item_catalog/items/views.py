@@ -47,6 +47,8 @@ def item(item_name):
     item = Item.query.filter_by(name=item_name).first()
     if not item:
         abort(404)
+    elif item.private and current_user != item.user:
+        abort(403)
     return render_template('item.html', item=item)
 
 
