@@ -3,7 +3,7 @@ from flask import (render_template, redirect, url_for, flash, abort, request,
 from flask_login import login_required, current_user
 from item_catalog import db
 from item_catalog.items.forms import ItemForm, DeleteItemForm
-from item_catalog.models import Item, User
+from item_catalog.models import Item
 
 items = Blueprint('items', __name__)
 
