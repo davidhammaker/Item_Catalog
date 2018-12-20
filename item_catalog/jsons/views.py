@@ -42,5 +42,6 @@ def sport_json(sport):
               'Other']
     if sport not in sports:
         abort(404)
-    items = Item.query.filter_by(sport=sport).order_by(Item.name).all()
+    items = Item.query.filter_by(sport=sport, private=False)\
+        .order_by(Item.name).all()
     return jsonify(json_prep(items))
