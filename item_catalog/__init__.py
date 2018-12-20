@@ -25,8 +25,10 @@ def create_app(config_class=Config):
     from item_catalog.main.views import main
     from item_catalog.items.views import items
     from item_catalog.dance.utils import blueprint as dance
+    from item_catalog.jsons.views import jsons
     app.register_blueprint(main)
     app.register_blueprint(items)
     app.register_blueprint(dance, url_prefix='/login')
+    app.register_blueprint(jsons)
 
     return app
