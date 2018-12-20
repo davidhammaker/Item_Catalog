@@ -290,7 +290,7 @@ nav a{
 
 /* lists */
 .list{
-    margin-left: 100px;
+    margin-left: 50px;
 }
 
 .list ul{
@@ -405,4 +405,13 @@ nav a{
     border-width: 2px;
     border-style: solid;
     border-radius: 5px;
+}
+
+/* Other */
+.note{
+    position: relative;
+    top: 30px;
+    right: 50px;
+    border-style: none;
+    width: 400px;
 }
