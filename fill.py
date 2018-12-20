@@ -1,6 +1,8 @@
 import sys
-from item_catalog import app, db
+from item_catalog import create_app, db
 from item_catalog.models import Item, User
+
+app = create_app()
 
 
 if __name__ == '__main__':
