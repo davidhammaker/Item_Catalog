@@ -53,6 +53,7 @@ def item(item_name):
 
 
 @items.route('/item/<string:item_name>/edit', methods=['GET', 'POST'])
+@login_required
 def edit_item(item_name):
     """Render a form for updating an existing item, or redirect after
     item update.
@@ -63,6 +64,8 @@ def edit_item(item_name):
     item = Item.query.filter_by(name=item_name).first()
     if not item:
         abort(404)
+    elif current_user != item.user:
+        abort(403)
     form = ItemForm()
     if form.validate_on_submit():
         if form.name.data != item.name or form.sport.data != item.sport:
@@ -91,6 +94,7 @@ def edit_item(item_name):
 
 
 @items.route('/item/<string:item_name>/delete', methods=['GET', 'POST'])
+@login_required
 def delete_item(item_name):
     """Render a form for deleting an existing item, or redirect after
     item deletion.
@@ -101,6 +105,8 @@ def delete_item(item_name):
     item = Item.query.filter_by(name=item_name).first()
     if not item:
         abort(404)
+    elif current_user != item.user:
+        abort(403)
     form = DeleteItemForm()
     if form.validate_on_submit():
         db.session.delete(item)
