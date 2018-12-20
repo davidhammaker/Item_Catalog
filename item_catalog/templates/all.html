@@ -20,17 +20,7 @@
                 <br>
             {% endfor %}
             <br>
-            {% for page_num in items.iter_pages() %}
-                {% if page_num %}
-                    {% if items.page == page_num %}
-                        <span class="page-num-current">{{ page_num }}</span>
-                    {% else %}
-                        <a href="{{ url_for('main.all_items', page=page_num) }}" class="page-num">{{ page_num }}</a>
-                    {% endif %}
-                {% else %}
-                    ...
-                {% endif %}
-            {% endfor %}
+            {% include 'page_numbers.html' %}
         </div>
     </div>
 {% endblock content %}

@@ -1,0 +1,17 @@
+{% for page_num in items.iter_pages() %}
+    {% if page_num %}
+        {% if items.page == page_num %}
+            <span class="page-num-current">{{ page_num }}</span>
+        {% else %}
+            {% if view == 'category' %}
+                <a href="{{ url_for('main.' + view, page=page_num, category=header) }}" class="page-num">{{ page_num }}</a>
+            {% elif view == 'sport' %}
+                <a href="{{ url_for('main.' + view, page=page_num, sport=header) }}" class="page-num">{{ page_num }}</a>
+            {% else %}
+                <a href="{{ url_for('main.' + view, page=page_num) }}" class="page-num">{{ page_num }}</a>
+            {% endif %}
+        {% endif %}
+    {% else %}
+        ...
+    {% endif %}
+{% endfor %}

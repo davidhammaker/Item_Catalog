@@ -29,7 +29,7 @@ def all_items():
     else:
         items = Item.query.order_by(Item.name).filter_by(private=False)\
             .paginate(page=page, per_page=10)
-    return render_template('all.html', items=items)
+    return render_template('all.html', items=items, view='all_items')
 
 
 @main.route('/my_items')
@@ -39,7 +39,7 @@ def my_items():
     page = request.args.get('page', 1, type=int)
     items = Item.query.order_by(Item.name).filter_by(user=current_user)\
         .paginate(page=page, per_page=10)
-    return render_template('all.html', items=items, header='My Items')
+    return render_template('all.html', items=items, header='My Items', view='my_items')
 
 
 @main.route('/sport/<string:sport>')
@@ -72,7 +72,7 @@ def sport(sport):
     else:
         items = Item.query.filter_by(sport=sport, private=False)\
             .order_by(Item.name).paginate(page=page, per_page=10)
-    return render_template('all.html', items=items, header=sport)
+    return render_template('all.html', items=items, header=sport, view='sport')
 
 
 @main.route('/category/<string:category>')
@@ -99,7 +99,7 @@ def category(category):
     else:
         items = Item.query.filter_by(category=category, private=False)\
             .order_by(Item.name).paginate(page=page, per_page=10)
-    return render_template('all.html', items=items, header=category)
+    return render_template('all.html', items=items, header=category, view='category')
 
 
 @main.route('/logout')
