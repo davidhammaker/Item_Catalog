@@ -10,6 +10,7 @@ if __name__ == '__main__':
         with app.app_context():
             db.create_all()
             db.session.commit()
+    app.app_context().push()
     u = User(username='exampleuser', email='example@example.com', name='John Doe')
     db.session.add(u)
     db.session.commit()
