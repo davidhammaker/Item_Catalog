@@ -219,6 +219,16 @@ nav a{
     padding-left: 20px;
 }
 
+.center a{
+    color: #393960;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.center a:hover{
+    color: #6060ff;
+}
+
 /* Smaller Centered Content */
 .center-small{
     width: 400px;
