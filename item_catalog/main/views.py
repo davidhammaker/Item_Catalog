@@ -75,6 +75,33 @@ def sport(sport):
     return render_template('all.html', items=items, header=sport)
 
 
+@main.route('/category/<string:category>')
+def category(category):
+    """Render a page with all items for a given category.
+
+    Keyword arguments:
+    category -- the category by which items are filtered
+    """
+    categories = ['Accessories',
+                  'Apparel',
+                  'Equipment',
+                  'Fan Gear']
+    if category not in categories:
+        abort(404)
+    page = request.args.get('page', 1, type=int)
+    if current_user.is_authenticated:
+        private_items = Item.query.filter_by(private=True, user=current_user,
+                                             category=category)
+        public_items = Item.query.filter_by(private=False, category=category)
+        items_combo = private_items.union(public_items)
+        items = items_combo.order_by(Item.name).paginate(page=page,
+                                                         per_page=10)
+    else:
+        items = Item.query.filter_by(category=category, private=False)\
+            .order_by(Item.name).paginate(page=page, per_page=10)
+    return render_template('all.html', items=items, header=category)
+
+
 @main.route('/logout')
 @login_required
 def logout():
