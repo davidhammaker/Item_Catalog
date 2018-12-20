@@ -63,3 +63,16 @@ def category_json(category):
     items = Item.query.filter_by(category=category, private=False)\
         .order_by(Item.name).all()
     return jsonify(json_prep(items))
+
+
+@jsons.route('/item/<string:item_name>/JSON')
+def item_json(item_name):
+    """Render a JSON page with information for a specific item.
+
+    Keyword arguments:
+    item_name -- the name of the item
+    """
+    item = Item.query.filter_by(name=item_name, private=False).first()
+    if not item:
+        abort(404)
+    return jsonify(json_prep(item))
