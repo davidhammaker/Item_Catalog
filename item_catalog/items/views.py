@@ -38,8 +38,7 @@ def new_item():
 
 @items.route('/item/<string:item_name>')
 def item(item_name):
-    """Render a form for updating an existing item, or redirect after
-    item update.
+    """Render a page with information for a specific item.
 
     Keyword arguments:
     item_name -- the name of the item
