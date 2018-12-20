@@ -45,3 +45,21 @@ def sport_json(sport):
     items = Item.query.filter_by(sport=sport, private=False)\
         .order_by(Item.name).all()
     return jsonify(json_prep(items))
+
+
+@jsons.route('/category/<string:category>/JSON')
+def category_json(category):
+    """Render a JSON page with all public items for a given category.
+
+    Keyword arguments:
+    category -- the category by which items are filtered
+    """
+    categories = ['Accessories',
+                  'Apparel',
+                  'Equipment',
+                  'Fan Gear']
+    if category not in categories:
+        abort(404)
+    items = Item.query.filter_by(category=category, private=False)\
+        .order_by(Item.name).all()
+    return jsonify(json_prep(items))
