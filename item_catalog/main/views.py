@@ -32,6 +32,16 @@ def all_items():
     return render_template('all.html', items=items)
 
 
+@main.route('/my_items')
+@login_required
+def my_items():
+    """Render all of a user's items alphabetically."""
+    page = request.args.get('page', 1, type=int)
+    items = Item.query.order_by(Item.name).filter_by(user=current_user)\
+        .paginate(page=page, per_page=10)
+    return render_template('all.html', items=items)
+
+
 @main.route('/sport/<string:sport>')
 def sport(sport):
     """Render a page with all items for a given sport.
