@@ -5,6 +5,8 @@ app = create_app()
 
 
 if __name__ == '__main__':
+
+    # If the '--setup' flag is passed, create tables
     if '--setup' in sys.argv:
         with app.app_context():
             db.create_all()
