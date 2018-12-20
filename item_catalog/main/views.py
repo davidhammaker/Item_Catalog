@@ -1,6 +1,6 @@
 from flask import (render_template, abort, request, Blueprint, flash,
                    redirect, url_for)
-from flask_login import login_required, logout_user
+from flask_login import login_required, logout_user, current_user
 from item_catalog.models import Item
 
 main = Blueprint('main', __name__)
@@ -20,7 +20,15 @@ def home():
 def all_items():
     """Render a page with all items alphabetically."""
     page = request.args.get('page', 1, type=int)
-    items = Item.query.order_by(Item.name).paginate(page=page, per_page=10)
+    if current_user.is_authenticated:
+        private_items = Item.query.filter_by(private=True, user=current_user)
+        public_items = Item.query.filter_by(private=False)
+        items_combo = private_items.union(public_items)
+        items = items_combo.order_by(Item.name).paginate(page=page,
+                                                         per_page=10)
+    else:
+        items = Item.query.order_by(Item.name).filter_by(private=False)\
+            .paginate(page=page, per_page=10)
     return render_template('all.html', items=items)
 
 
