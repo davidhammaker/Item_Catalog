@@ -2,7 +2,9 @@
     <ul>
         <li><a href="{{ url_for('main.home') }}">Home</a></li>
         <li><a href="{{ url_for('main.all_items') }}">All Items</a></li>
-        <li><a href="#">My Items</a></li>
+        {% if current_user.is_authenticated %}
+            <li><a href="{{ url_for('main.my_items') }}">My Items</a></li>
+        {% endif %}
     </ul>
     <br>
     <br>
