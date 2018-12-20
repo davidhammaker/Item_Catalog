@@ -39,7 +39,7 @@ def my_items():
     page = request.args.get('page', 1, type=int)
     items = Item.query.order_by(Item.name).filter_by(user=current_user)\
         .paginate(page=page, per_page=10)
-    return render_template('all.html', items=items)
+    return render_template('all.html', items=items, header='My Items')
 
 
 @main.route('/sport/<string:sport>')
@@ -64,7 +64,7 @@ def sport(sport):
     page = request.args.get('page', 1, type=int)
     items = Item.query.filter_by(sport=sport).order_by(Item.name)\
         .paginate(page=page, per_page=10)
-    return render_template('all.html', items=items)
+    return render_template('all.html', items=items, header=sport)
 
 
 @main.route('/logout')
