@@ -6,7 +6,7 @@ def json_prep(items):
     """
 
     # If the object is a list, convert it to a list of dictionaries.
-    if type(items) == type([]):
+    if isinstance(items, type([])):
         prepped = []
         for item in items:
             prepped_item = {
