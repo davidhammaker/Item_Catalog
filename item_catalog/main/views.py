@@ -18,7 +18,10 @@ def home():
     # Create a list of the most recent 10 items
     items = []
     for i in range(10):
-        items.append(query[i])
+        try:
+            items.append(query[i])
+        except IndexError:
+            break
 
     return render_template('home.html', items=items)
 

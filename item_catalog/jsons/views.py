@@ -26,7 +26,10 @@ def recent_json():
 
     # Create a list of the most recent 10 items
     for i in range(10):
-        items.append(query[i])
+        try:
+            items.append(query[i])
+        except IndexError:
+            break
 
     return jsonify(json_prep(items))
 
