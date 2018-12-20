@@ -13,11 +13,13 @@
             <small class="footer">Submitted by {{ item.user.username }}.</small>
         </div>
         <br>
-        <div class="center-small">
-            <ul>
-                <li><a href="{{ url_for('items.edit_item', item_name=item.name) }}">Edit Item</a></li>
-                <li><a href="{{ url_for('items.delete_item', item_name=item.name) }}" class="delete">Delete Item</a></li>
-            </ul>
-        </div>
+        {% if item.user == current_user %}
+            <div class="center-small">
+                <ul>
+                    <li><a href="{{ url_for('items.edit_item', item_name=item.name) }}">Edit Item</a></li>
+                    <li><a href="{{ url_for('items.delete_item', item_name=item.name) }}" class="delete">Delete Item</a></li>
+                </ul>
+            </div>
+        {% endif %}
     </div>
 {% endblock content %}
