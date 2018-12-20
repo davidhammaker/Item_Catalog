@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, abort
+from flask import Blueprint, jsonify, abort, render_template
 from item_catalog.models import Item
 from item_catalog.jsons.utils import json_prep
 
@@ -76,3 +76,9 @@ def item_json(item_name):
     if not item:
         abort(404)
     return jsonify(json_prep(item))
+
+
+@jsons.route('/other/directory')
+def directory():
+    """Render a template with a list of JSON endpoints."""
+    return render_template('directory.html')

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="main">
+        <div class="center">
+            <h2>JSON Endpoints</h2>
+            <div class="list">
+                <br>
+                <br>
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="{{ url_for('jsons.recent_json') }}">Recent Items</a></li>
+                    <li><a href="{{ url_for('jsons.all_items_json') }}">All Items</a></li>
+                </ul>
+                <br>
+                <br>
+                <h3>Sports</h3>
+                <ul>
+                    <li><a href="{{ url_for('jsons.sport_json', sport='Baseball') }}">Baseball</a></li>
+                    <li><a href="{{ url_for('jsons.sport_json', sport='Basketball') }}">Basketball</a></li>
+                    <li><a href="{{ url_for('jsons.sport_json', sport='Bowling') }}">Bowling</a></li>
+                    <li><a href="{{ url_for('jsons.sport_json', sport='Boxing') }}">Boxing</a></li>
+                    <li><a href="{{ url_for('jsons.sport_json', sport='Football') }}">Football</a></li>
+                    <li><a href="{{ url_for('jsons.sport_json', sport='Golf') }}">Golf</a></li>
+                    <li><a href="{{ url_for('jsons.sport_json', sport='Hockey') }}">Hockey</a></li>
+                    <li><a href="{{ url_for('jsons.sport_json', sport='Soccer') }}">Soccer</a></li>
+                    <li><a href="{{ url_for('jsons.sport_json', sport='Tennis') }}">Tennis</a></li>
+                    <li><a href="{{ url_for('jsons.sport_json', sport='Other') }}">Other</a></li>
+                </ul>
+                <br>
+                <br>
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="{{ url_for('jsons.category_json', category='Accessories') }}">Accessories</a></li>
+                    <li><a href="{{ url_for('jsons.category_json', category='Apparel') }}">Apparel</a></li>
+                    <li><a href="{{ url_for('jsons.category_json', category='Equipment') }}">Equipment</a></li>
+                    <li><a href="{{ url_for('jsons.category_json', category='Fan Gear') }}">Fan Gear</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

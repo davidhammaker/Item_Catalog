@@ -288,6 +288,39 @@ nav a{
     border-color: #ff6060;
 }
 
+/* lists */
+.list{
+    margin-left: 100px;
+}
+
+.list ul{
+    list-style: none;
+}
+
+.list ul li{
+    font-size: large;
+    line-height: 30px;
+}
+
+.list ul li a{
+    padding-left: 10px;
+    margin-left: 10px;
+    color: #000000;
+    text-decoration: none;
+    border-left-color: #afafcf;
+    border-left-style: solid;
+    border-left-width: 10px;
+    border-radius: 10px;
+}
+
+.list ul li a:hover{
+    color: #6060ff;
+    margin-left: 5px;
+    border-left-color: #6060ff;
+    border-left-width: 15px;
+    border-radius: 15px;
+}
+
 /* Forms */
 .center form{
     width: 500px;
