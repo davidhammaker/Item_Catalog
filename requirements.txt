@@ -5,3 +5,4 @@ flask-sqlalchemy
 flask-dance[sqla]
 blinker
 gunicorn
+psycopg2
