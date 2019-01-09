@@ -1,14 +1,33 @@
 # Item Catalog
 
-_This application is my submission for the "Item Catalog" project in Udacity's Full Stack Development Nanodegree program._
-
 The application displays a list of sports-related items in a variety of formats. Users may view a list of all items, recently created items, or a number of items that match certain sport or category. Users may also view individual items and their descriptions. Users may log in with GitHub to create their own items, which may be updated or deleted. Items may only be updated or deleted by their creators, and items that are "private" may only be viewed by their creators.
 
 The application also implements a number of JSON endpoints, including all items, recent items, individual items, and items for a specific sport or category. JSON endpoints do not include items that are set to "private" by their creators.
 
+### Notes
+
+If you would like to see this app in action, or if you would like to deploy the app for yourself, please see the **Deployment** section below.
+
+If you would like to run the app locally on your computer, follow the instructions listed in the **Dependencies** and **Usage** sections below.
+
+## Deployment
+
+This application has been deployed on Heroku, [here](https://item-catalog-demo.herokuapp.com/).
+
+The application is deployment-ready via Heroku, with the exception of setting environment variables. If you would like to deploy this application on Heroku, please see [this tutorial](https://devcenter.heroku.com/articles/getting-started-with-python) for deploying the application. As you follow the tutorial, you will need to install Heroku's PostgreSQL addon, then use `$ heroku config` to view your environment variables. The following environment variables must be set:
+
+* IC_SECRET
+* IC_DATABASE
+* IC_CLIENT_ID
+* IC_CLIENT_SECRET
+
+Use [this documentation](https://devcenter.heroku.com/articles/config-vars) to understand how to set environment variables for your Heroku app. Follow the instructions in **Dependencies** (below) under _Secret Key and Database URI_ to obtain a value for "IC_SECRET", and under _GitHub OAuth App_ to obtain values for "IC_CLIENT_ID" and "IC_CLIENT_SECRET". To obtain a value for "IC_DATABASE", however, you must use the value of "DATABASE_URL".
+
+After you have set all four environment variables, the app should be fully functional.
+
 ## Dependencies
 
-You will need access to a shell terminal (I am using [GitBash](https://git-scm.com/downloads) for Windows). You will also need to install the latest version of [Python 3](https://www.python.org/downloads/), which must be Python 3.6 or later. This app is incompatible with Python 2 and Python 3.5 or older.
+You will need access to a shell terminal (I am using [GitBash](https://git-scm.com/downloads) for Windows). You will also need to install the latest version of [Python 3](https://www.python.org/downloads/), which must be Python 3.6 or later. This app is incompatible with Python 2 and Python 3.5 or older. The deployed version of this application uses Python 3.7.1.
 
 Once you have a shell terminal and Python 3 installed, you can start by cloning the repository:
 
@@ -36,8 +55,8 @@ Both the application secret key (for forms) and the database URI have been set t
 
 * Skipping this step: If you are not concerned about security, you can edit 'item_catalog/config.py' and replace the environment variables with strings of your choice:
 ```
-SECRET_KEY = 'secret'
-SQLALCHEMY_DATABASE_URI = 'sqlite:///example.db'
+IC_SECRET = 'secret'
+IC_DATABASE = 'sqlite:///example.db'
 ```
 
 If you would like to learn how to set up environment variables, here are a few brief videos that explain the process for [Windows](https://www.youtube.com/watch?v=IolxqkL7cD8) and [Mac and Linux](https://www.youtube.com/watch?v=5iWhQWVXosU). (Note: I was only successful when I followed the "Mac and Linux" tutorial using GitBash for Windows.) The first two environment variables must be named "IC_SECRET" and "IC_DATABASE". Follow these steps to obtain values for each:
@@ -76,7 +95,7 @@ $ export OAUTHLIB_INSECURE_TRANSPORT=1
 
 ## Usage
 
-_Remember that you must set "OAUTHLIB INSECURE TRANSPORT" prior to running the application. See "Dependencies" for more information._
+_Remember that you must set "OAUTHLIB INSECURE TRANSPORT" prior to running the application locally. See "Dependencies" for more information._
 
 When running the application for the first time, you have a few different options for how you would like to set up the application. You may set up the application with an empty database (with no items in the catalog), or you may fill in the database with pre-made items at the time of its creation. If you set up the application with an empty database, you can still fill the database with the pre-made items later.
 
@@ -100,6 +119,12 @@ Make sure your virtual environment is active, then run `$ python fill.py`. If th
 
 Again, you may start the application with `$ python run.py`.
 
+
+## Trivia
+
+This application was originally my submission for the "Item Catalog" project in Udacity's Full Stack Development Nanodegree program.
+
+
 ## Copyright
 
-© David J. Hammaker 2018
+© David J. Hammaker 2018-2019
