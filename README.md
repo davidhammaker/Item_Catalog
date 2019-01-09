@@ -72,7 +72,7 @@ The result should be a long string of random characters. Set your environment va
 
 ### GitHub OAuth App
 
-For 3rd party OAuth provision to function properly, you must create an OAuth App in GitHub. You may create an app [here](https://github.com/settings/applications/new). Set "Homepage URL" to "http://localhost:5000", and "Authorization callback URL" to "http://localhost:5000/login/github/authorized". The other fields maybe filled in however you want. Register your app and find values for "Client ID" and "Client Secret". Create environment variables with these values, named "IC_CLIENT_ID" and "IC_CLIENT_SECRET" respectively.
+For 3rd party OAuth provision to function properly, you must create an OAuth App in GitHub. You may create an app [here](https://github.com/settings/applications/new). Set "Homepage URL" to "http://localhost:5000", and "Authorization callback URL" to "http://localhost:5000/login/github/authorized". (_Note_: If you are deploying the application to Heroku, or any other host, use the home-page URL for your deployment instead of "http://localhost:5000".) The other fields maybe filled in however you want. Register your app and find values for "Client ID" and "Client Secret". Create environment variables with these values, named "IC_CLIENT_ID" and "IC_CLIENT_SECRET" respectively.
 
 * If setting the environment variables is unsuccessful, you may insert the values directly into your code for demonstration purposes only.
 ```
